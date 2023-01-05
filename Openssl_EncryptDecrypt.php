@@ -1,4 +1,6 @@
 <?php
+defined('APP_PATH') or exit('No direct script access allowed'); 
+
 /*
 * https://stackoverflow.com/a/57249681
 */

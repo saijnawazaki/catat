@@ -8,6 +8,7 @@ defined('APP_PATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?=MAFURA_URL?>mafura.css" rel="stylesheet">
     <title><?=APP_TITLE?></title>
+    <link rel="stylesheet" type="text/css" href="https://bmsvieira.github.io/EasyGrid/css/easygrid.css">
   </head>
   <body>
     <header class="nav bg-black color-white">
@@ -167,5 +168,6 @@ defined('APP_PATH') OR exit('No direct script access allowed');
         }
         
     </script>
+    <script src="https://bmsvieira.github.io/EasyGrid/js/easygrid.js"></script>
   </body>
 </html>
