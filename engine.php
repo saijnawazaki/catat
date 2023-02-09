@@ -122,6 +122,55 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
                     
         }    
     }
+    elseif($page == 'note_details_edit')
+    {
+        if(isset($_POST['v_save']))
+        {
+            $v_id = isset($_POST['v_id']) ? $_POST['v_id'] : '';    
+            $v_title = isset($_POST['v_title']) ? $_POST['v_title'] : '';    
+            $v_content = isset($_POST['v_content']) ? $_POST['v_content'] : '';
+            $_SESSION['mess'] = '';
+            
+            if($_SESSION['mess'] == '')
+            {
+                $query = "
+                    insert into
+                        note
+                        (
+                            id,
+                            account_id,
+                            title,
+                            content,
+                            status_id,
+                            created_at
+                        )
+                    values
+                        (
+                            '".$v_id."',
+                            '".$ses['user_id']."',
+                            '".data_encrypt($v_title,$ses['auth_key'])."',
+                            '".data_encrypt($v_content,$ses['auth_key'])."',
+                            '1',
+                            '".time()."'
+                        )
+                ";
+
+                
+                if($db->query($query))
+                {
+                    $_SESSION['mess'] .= 'Update Successfully';
+                    header('location: '.APP_URL.'?page=note_details_edit&id='.$v_id);
+                     
+                }
+                else
+                {
+                    $_SESSION['mess'] .= 'Update Failed';
+                  
+                }    
+            }
+                    
+        }    
+    }
     else
     {
         header('location: '.APP_URL.'?page=fatal_error');
